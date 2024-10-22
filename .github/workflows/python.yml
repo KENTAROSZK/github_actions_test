@@ -1,0 +1,36 @@
+name: Python Workflow
+
+on: [push]
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Generate random array
+        run: python src/generate_array.py
+
+  sum:
+    runs-on: ubuntu-latest
+    needs: generate
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.10'
+
+      - name: Calculate sum
+        run: python src/sum_array.py
