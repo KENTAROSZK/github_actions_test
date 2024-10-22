@@ -1,5 +1,5 @@
 # output.txtファイルを読み取る
-with open('output.txt', 'r') as f:
+with open('./src/output.txt', 'r') as f:
     data = f.read()
 
 # 整数をリストに変換

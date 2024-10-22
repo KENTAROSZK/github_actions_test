@@ -4,5 +4,5 @@ import numpy as np
 random_integers = np.random.randint(1, 100, size=2)
 
 # 配列を.txtファイルに出力
-with open('output.txt', 'w') as f:
+with open('./src/output.txt', 'w') as f:
     f.write(','.join(map(str, random_integers)))
