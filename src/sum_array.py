@@ -1,5 +1,10 @@
+import os
+
+# 環境変数から出力ファイル名を取得
+file_name = os.getenv('INPUT_FILE', 'numbers.txt')
+
 # output.txtファイルを読み取る
-with open('./src/output.txt', 'r') as f:
+with open(file_name, 'r') as f:
     data = f.read()
 
 # 整数をリストに変換

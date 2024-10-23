@@ -7,10 +7,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v2
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v2
         with:
           python-version: '3.10'
 
@@ -18,19 +18,35 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Generate random array
+        env:
+          OUTPUT_FILE: output.txt
         run: python src/generate_array.py
+
+      - name: Upload output.txt
+        uses: actions/upload-artifact@v2
+        with:
+          name: output-file
+          path: output.txt
+
 
   sum:
     runs-on: ubuntu-latest
-    needs: generate
+    needs: generate # このジョブはgenerateジョブが成功しなければ実行されない
     steps:
+      - name: Download numbers.txt
+        uses: actions/download-artifact@v2
+        with:
+          name: output-file
+      
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v2
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v2
         with:
           python-version: '3.10'
 
       - name: Calculate sum
+        env:
+            INPUT_FILE: output.txt
         run: python src/sum_array.py
