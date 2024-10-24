@@ -53,7 +53,7 @@ jobs:
         run: pwd
 
       - name: Display ls before run sum_array.py
-        run: ls /src
+        run: ls src/
 
       - name: Calculate sum
         env:
