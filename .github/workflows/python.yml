@@ -42,7 +42,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: output-file
-          path: output.txt
+          path: src/output.txt
       
       - name: Checkout code
         uses: actions/checkout@v4
