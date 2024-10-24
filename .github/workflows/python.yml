@@ -64,4 +64,4 @@ jobs:
         run: ls src/
 
       - name: Calculate sum
-        run: python sum_array.py
+        run: python src/sum_array.py
