@@ -1,7 +1,7 @@
 import os
 
 # 環境変数から出力ファイル名を取得
-file_name = os.getenv('INPUT_FILE', 'numbers.txt')
+file_name = os.getenv('INPUT_FILE', 'output.txt')
 
 # output.txtファイルを読み取る
 with open(file_name, 'r') as f:
