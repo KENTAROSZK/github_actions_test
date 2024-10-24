@@ -18,8 +18,6 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Generate random array
-        env:
-          OUTPUT_FILE: output.txt
         run: python src/generate_array.py
 
       - name: Display ls after generate_array.py
@@ -61,6 +59,4 @@ jobs:
         run: ls src/
 
       - name: Calculate sum
-        env:
-            INPUT_FILE: src/output.txt
         run: python src/sum_array.py
