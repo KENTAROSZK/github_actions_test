@@ -33,11 +33,13 @@ jobs:
     runs-on: ubuntu-latest
     needs: generate # このジョブはgenerateジョブが成功しなければ実行されない
     steps:
+      - name: Display path
+        run: pwd
       - name: Download output.txt
         uses: actions/download-artifact@v4
         with:
           name: output-file
-          path: src/output.txt
+          path: src
       
       - name: Checkout code
         uses: actions/checkout@v2
