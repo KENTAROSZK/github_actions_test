@@ -32,6 +32,9 @@ jobs:
       - name: Display ls after upload-artifact
         run: ls src/
 
+      - name: Display the contents of src/output.txt
+        run: cat src/output.txt
+
   sum:
     runs-on: ubuntu-latest
     needs: generate # このジョブはgenerateジョブが成功しなければ実行されない
@@ -62,6 +65,9 @@ jobs:
 
       - name: Display ls before run sum_array.py
         run: ls src/
+
+      - name: Display the contents of src/output.txt
+        run: cat src/output.txt
 
       - name: Calculate sum
         run: python src/sum_array.py
