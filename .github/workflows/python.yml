@@ -23,7 +23,7 @@ jobs:
         run: python src/generate_array.py
 
       - name: Upload output.txt
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: output-file
           path: output.txt
@@ -34,7 +34,7 @@ jobs:
     needs: generate # このジョブはgenerateジョブが成功しなければ実行されない
     steps:
       - name: Download numbers.txt
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: output-file
       
