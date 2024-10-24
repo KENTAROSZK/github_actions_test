@@ -52,6 +52,9 @@ jobs:
       - name: Display path before run sum_array.py
         run: pwd
 
+      - name: Display ls before run sum_array.py
+        run: ls /src
+
       - name: Calculate sum
         env:
             INPUT_FILE: src/output.txt
