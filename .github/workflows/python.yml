@@ -20,26 +20,16 @@ jobs:
       - name: Generate random array
         run: python src/generate_array.py
 
-      - name: Display ls after generate_array.py
-        run: ls src/
-
       - name: Upload output.txt
         uses: actions/upload-artifact@v4
         with:
           name: output-file
           path: src/output.txt
 
-      - name: Display ls after upload-artifact
-        run: ls src/
-
-      - name: Display the contents of src/output.txt
-        run: cat src/output.txt
-
   sum:
     runs-on: ubuntu-latest
     needs: generate # このジョブはgenerateジョブが成功しなければ実行されない
-    steps:
-      
+    steps:      
       - name: Checkout code
         uses: actions/checkout@v4
 
@@ -48,29 +38,11 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: Display path before download
-        run: pwd
-
-      - name: Download output.txt
+      - name: Download output.txt # python環境のセットアップ（actions/setup-python@v4）が完了してから、ダウンロードする必要がある.
         uses: actions/download-artifact@v4
         with:
           name: output-file
-          path: src
-
-      - name: Display the contents of src/output.txt after download
-        run: cat src/output.txt
-
-      - name: Display ls after download-artifact
-        run: ls src/
-
-      - name: Display path before run sum_array.py
-        run: pwd
-
-      - name: Display ls before run sum_array.py
-        run: ls src/
-
-      - name: Display the contents of src/output.txt
-        run: cat src/output.txt
+          path: src # `src/`にoutput-file（output.txt）を保存する
 
       - name: Calculate sum
         run: python src/sum_array.py
