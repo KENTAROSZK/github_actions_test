@@ -58,7 +58,7 @@ jobs:
           path: src
 
       - name: Display the contents of src/output.txt after download
-        run: cat output.txt
+        run: cat src/output.txt
 
       - name: Display ls after download-artifact
         run: ls src/
