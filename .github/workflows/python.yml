@@ -55,8 +55,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: output-file
-          path: src/output.txt
-
+      
       - name: Display ls after download-artifact
         run: ls src/
 
