@@ -55,6 +55,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: output-file
+          path: src
 
       - name: Display the contents of src/output.txt after download
         run: cat output.txt
